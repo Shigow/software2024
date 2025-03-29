@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <title>Book with AimForge</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"></link>
+</head>
+
+<body>
+    <div class=" banner">
+        <div class="navbar ">
+            <div class="logo">
+                <video class="logo" autoplay loop muted>
+                    <source src="/videos/aimlog.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+              </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/reportform">Report</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="form-container">
+            <h2>Create a booking with AimForge!</h2>
+        
+            <form id="form" action="/booking/create" method="post">
+                <p>
+                    <label for="name">Enter your full name:</label>
+                    <input type="text" id="name" name="name" placeholder="Name" required>
+                </p>
+                <br>
+                <p>
+                    <label for="id">ID (10 Numbers):</label>
+                    <input type="text" id="id" name="id" maxlength="10" required placeholder="1234567890">
+                </p>
+                <br>
+                <p>
+                    <label for="dateTime">Date & Time:</label>
+                    <input type="datetime" id="dateTime" name="dateTime" required>
+                </p>
+                <br>
+                <p>
+                    <label for="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" required placeholder="XXXX-XXXX-XXXX-XXXX">
+                </p>
+                <br>
+                <p>
+                    <label for="expiryDate">Expiry Date:</label>
+                    <input type="text" id="expiryDate" name="expiryDate" required placeholder="MM/YY">
+                </p>
+                <br>
+                <p>
+                    <label for="securityCode">Security Code:</label>
+                    <input type="text" id="securityCode" name="securityCode" maxlength="4" required placeholder="CVV">
+                </p>
+        
+                <button id="button" type="submit">Submit</button>
+            </form>
+        </div>
+        
+        <script>
+            const form = document.getElementById('form');
+        
+            form.onsubmit = (e) => {
+                // Prevent default submission
+                e.preventDefault();
+        
+                // Validate all fields
+                const name = document.getElementById('name').value.trim();
+                const id = document.getElementById('id').value.trim();
+                const dateTime = document.getElementById('dateTime').value;
+                const cardNumber = document.getElementById('cardNumber').value.trim();
+                const expiryDate = document.getElementById('expiryDate').value.trim();
+                const securityCode = document.getElementById('securityCode').value.trim();
+        
+                // Full name validation (must not be empty)
+                if (name.length === 0) {
+                    alert("Full name is required.");
+                    return;
+                }
+        
+                // ID validation (exactly 10 characters)
+                if (id.length !== 10 || !/^\d{10}$/.test(id)) {
+                    alert("ID must be exactly 10 numeric characters.");
+                    return;
+                }
+        
+                // Date & Time validation (must not be empty)
+                if (!dateTime) {
+                    alert("Date and time are required.");
+                    return;
+                }
+        
+                // Card Number validation (format: XXXX-XXXX-XXXX-XXXX)
+                if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(cardNumber)) {
+                    alert("Card Number must be in the format XXXX-XXXX-XXXX-XXXX.");
+                    return;
+                }
+        
+                // Expiry Date validation (format: MM/YY)
+                if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+                    alert("Expiry Date must be in the format MM/YY.");
+                    return;
+                }
+        
+                // Security Code validation (3 or 4 digits)
+                if (!/^\d{3,4}$/.test(securityCode)) {
+                    alert("Security Code must be 3 or 4 digits.");
+                    return;
+                }
+        
+                // If all validations pass
+                alert("Form submitted successfully!");
+                form.submit(); // Perform actual form submission
+            };
+        </script>
+        

@@ -1,0 +1,222 @@
+body {
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Set the height of the container to fill the viewport */
+    margin: 0; /* Remove default margin */
+    background-color: #f3f4f6; /* Optional: background color for the page */
+}
+
+body {
+    background: #050d27;
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url(/images/glow.jpg);
+    background-size: cover;
+    background-position: center;
+    background-color: gray;
+}
+
+.content {
+    width: 100%;
+    position: absolute;
+    text-align: center;
+    color: #fff;
+}
+
+
+
+.logo {
+    width: 160px;
+    cursor: pointer;
+}
+
+/* Styling the navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #141f4e;
+    padding: 10px 20px;
+    color: white;
+}
+
+/* Logo container styling */
+.navbar .logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo video styling */
+.navbar .logo video {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Logo text next to the video */
+.navbar .logo::after {
+    content: 'AimForge';
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* Styling the navigation links */
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+    color: #1e90ff;
+}
+
+.table-wrapper {
+    margin: 10px 70px 70px;
+}
+
+.tableData {
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+    padding-bottom: 30px;
+}
+
+.tableData td,
+.tableData th {
+    text-align: center;
+    padding: 8px;
+}
+
+.tableData td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12px;
+}
+
+.tableData thead th {
+    color: #ffffff;
+    background: #4f6ec3;
+}
+
+.tableData thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #21275f;
+}
+
+.tableData tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+
+/* Responsive */
+
+@media (max-width: 767px) {
+    .tableData {
+        display: block;
+        width: 100%;
+    }
+    .table-wrapper:before {
+        content: "Scroll horizontally >";
+        display: block;
+        text-align: right;
+        font-size: 11px;
+        color: white;
+        padding: 0 0 10px;
+    }
+    .tableData thead,
+    .tableData tbody,
+    .tableData thead th {
+        display: block;
+    }
+    .tableData thead th:last-child {
+        border-bottom: none;
+    }
+    .tableData thead {
+        float: left;
+    }
+    .tableData tbody {
+        width: auto;
+        position: relative;
+        overflow-x: auto;
+    }
+    .tableData td,
+    .tableData th {
+        padding: 20px .625em .625em .625em;
+        height: 60px;
+        vertical-align: middle;
+        box-sizing: border-box;
+        overflow-x: hidden;
+        overflow-y: auto;
+        width: 120px;
+        font-size: 13px;
+        text-overflow: ellipsis;
+    }
+    .tableData thead th {
+        text-align: left;
+        border-bottom: 1px solid #f7f7f9;
+    }
+    .tableData tbody tr {
+        display: table-cell;
+    }
+    .tableData tbody tr:nth-child(odd) {
+        background: none;
+    }
+    .tableData tr:nth-child(even) {
+        background: transparent;
+    }
+    .tableData tr td:nth-child(odd) {
+        background: #F8F8F8;
+        border-right: 1px solid #E6E4E4;
+    }
+    .tableData tr td:nth-child(even) {
+        border-right: 1px solid #E6E4E4;
+    }
+    .tableData tbody td {
+        display: block;
+        text-align: center;
+    }
+}
+
+.secret input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+caption {
+    font-size: 20px;
+    margin-top: 80px;
+    text-align: center;
+    color: #fff;
+}
+
+.avg {
+    color: white;
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    padding: 10px;
+}
+

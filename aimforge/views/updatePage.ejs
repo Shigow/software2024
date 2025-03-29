@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <title>AimForge</title>
+    <link rel="stylesheet" href="/stylesheets/style.css"></link>
+</head>
+
+<body>
+    <div class=" banner ">
+        <div class="navbar ">
+            <div class="logo">
+                <video class="logo" autoplay loop muted>
+                    <source src="/videos/aimlog.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+              </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/reportform">Report</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <form id="form" action="/booking/updateComplete" method="post">
+                <div class="form-container">
+                    <h2>Update your booking with AimForge!</h2>
+                        <!-- Hidden ID Field -->
+                        <div class="secret">
+                            <input type="hidden" name="id" value="<%= bookinglist.id %>" readonly>
+                          </div>                  
+                        <!-- Name Input -->
+                        <label for="name">Enter your full name:</label>
+                        <input type="text" id="name" name="name" placeholder="Name" value="<%= bookinglist.name %>">
+                        <br>
+                    
+                        <!-- Visible ID Input -->
+                        <label for="id">ID (10 Numbers):</label>
+                        <input type="text" id="id" name="id" placeholder="1234567890" value="<%= bookinglist.id %>">
+                        <br>
+                    
+                        <!-- Date & Time Input -->
+                        <label for="dateTime">Date & Time:</label>
+                        <input type="text" id="dateTime" name="dateTime" value="<%= bookinglist.dateTime %>">
+                        <br>
+                    
+                        <!-- Card Number Input -->
+                        <label for="cardNumber">Card Number:</label>
+                        <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" value="<%= bookinglist.cardNumber %>">
+                        <br>
+                    
+                        <!-- Expiry Date Input -->
+                        <label for="expiryDate">Expiry Date:</label>
+                        <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" value="<%= bookinglist.expiryDate %>">
+                        <br>
+                    
+                        <!-- Security Code Input -->
+                        <label for="securityCode">Security Code:</label>
+                        <input type="text" id="securityCode" name="securityCode" placeholder="CVV" value="<%= bookinglist.securityCode %>">
+                        <br>
+                    
+                        <!-- Submit Button -->
+                        <button id="button" type="submit">Submit</button>
+                    </form>
+                </div>
+                        <!--<input TYPE="submit"></input>-->
+        
+            </div>
+        </body>
+        
+        </html>
+        <script>
+            const form = document.getElementById('form');
+        
+            form.onsubmit = (e) => {
+                e.preventDefault();
+        
+                const name = document.getElementById('name').value.trim();
+                const id = document.getElementById('id').value.trim();
+                const dateTime = document.getElementById('dateTime').value.trim();
+                const cardNumber = document.getElementById('cardNumber').value.trim();
+                const expiryDate = document.getElementById('expiryDate').value.trim();
+                const securityCode = document.getElementById('securityCode').value.trim();
+        
+                console.log({ name, id, dateTime, cardNumber, expiryDate, securityCode });
+        
+                // Validation logic here...
+                if (name.length === 0) {
+                    alert("Full name is required.");
+                    return;
+                }
+        
+                if (id.length !== 10 || !/^\d{10}$/.test(id)) {
+                    alert("ID must be exactly 10 numeric characters.");
+                    return;
+                }
+        
+                if (!dateTime) {
+                    alert("Date and time are required.");
+                    return;
+                }
+        
+                if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(cardNumber)) {
+                    alert("Card Number must be in the format XXXX-XXXX-XXXX-XXXX.");
+                    return;
+                }
+        
+                if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiryDate)) {
+                    alert("Expiry Date must be in the format MM/YY.");
+                    return;
+                }
+        
+                if (!/^\d{3,4}$/.test(securityCode)) {
+                    alert("Security Code must be 3 or 4 digits.");
+                    return;
+                }
+        
+                // If all validations pass, submit the form
+                alert("Form submitted successfully!");
+                form.submit();
+            };
+        </script>

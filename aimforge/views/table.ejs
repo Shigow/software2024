@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+    <title>AimForge Booking List</title>
+    <link rel="stylesheet" href="/stylesheets/styleTable.css"></link>
+</head>
+
+
+<body>
+    <div class=" banner ">
+        <div class="navbar ">
+            <div class="logo">
+                <video class="logo" autoplay loop muted>
+                    <source src="/videos/aimlog.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                  </video>
+              </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/reportform">Report</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </div>
+        </div>
+        <div class="content">
+            </form>
+        </div>
+        <div class="table-wrapper">
+            <table class="tableData">
+                <caption>Booking List!</caption>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>Card Number</th>
+                        <th>Security Code</th>
+                        <th>Created</th>
+                        <th>Actions</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for(var i=0; i < bookinglist.length; i++) { %>
+                        <tr>
+
+                            <td>
+                                <%= bookinglist[i].name %>
+                            </td>
+                            <td>
+                                <%= bookinglist[i].id %>
+                            </td>
+                            <td>
+                                <%= bookinglist[i].dateTime %>
+                            </td>
+                            <td>
+                                <%= bookinglist[i].cardNumber %>
+                            </td>
+                            <td>
+                                <%= bookinglist[i].securityCode %>
+                            </td>
+                            <td>
+                                <%= bookinglist[i].createdAt.toLocaleDateString() %>
+                            </td>
+                            <td>
+                                <div class="secret">
+                                    <form action="/booking/delete" method="post"> <input type="String" value="<%= bookinglist[i]._id %>" name="id" readonly><button type="Submit"><span></span>Delete</button></form>
+                                    <form action="/booking/update" method="post"> <input type="String" value="<%= bookinglist[i]._id %>" name="id" readonly><button type="Submit"><span></span>Update</button></form>
+                                </div>
+                            </td>
+
+
+                        </tr>
+                        <% } %>
+        </div>
+
+        </tbody>
+</body>
+
+</html>

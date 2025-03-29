@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AimForge Report</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="banner">
+        <div class="navbar">
+            <div class="logo">
+                <video class="logo" autoplay loop muted>
+                    <source src="/videos/aimlog.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/reportform">Report</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/help">Help</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Report Content -->
+    <div class="content">
+        <h1>Report for <%= userName %></h1>
+        <p>From: <strong><%= startDate %></strong> To: <strong><%= endDate %></strong></p>
+
+        <% if (booking.length > 0) { %>
+            <h2>Booking Details:</h2>
+            <table border="1" cellpadding="10" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Date & Time</th>
+                        <th>Card Number</th>
+                        <th>Expiry Date</th>
+                        <th>Security Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% booking.forEach(item => { %>
+                        <tr>
+                            <td><%= bookinglist.id %></td>
+                            <td><%= bookinglist.name %></td>
+                            <td><%= bookinglist.dateTime %></td>
+                            <td><%= bookinglist.cardNumber %></td>
+                            <td><%= bookinglist.expiryDate %></td>
+                            <td><%= bookinglist.securityCode %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <h2>No bookings found for the specified criteria.</h2>
+        <% } %>
+    </div>
+</body>
+</html>
